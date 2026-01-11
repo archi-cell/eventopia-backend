@@ -1,12 +1,22 @@
-const express = require('express');
-const { getAll, getOne, create, update, remove } = require('../controllers/eventController');
-const { protect, admin } = require('../middleware/auth');
+import express from "express";
+import {
+  getAll,
+  getOne,
+  create,
+  update,
+  remove
+} from "../controllers/eventController.js";
+import { protect, admin } from "../middleware/authMiddleware.js";
+
 const router = express.Router();
 
-router.get('/', getAll);
-router.get('/:id', getOne);
-router.post('/', protect, admin, create);
-router.put('/:id', protect, admin, update);
-router.delete('/:id', protect, admin, remove);
+// Public routes
+router.get("/", getAll);
+router.get("/:id", getOne);
+
+// Admin routes
+router.post("/", protect, admin, create);
+router.put("/:id", protect, admin, update);
+router.delete("/:id", protect, admin, remove);
 
 export default router;
