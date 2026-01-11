@@ -1,19 +1,34 @@
+// backend/middleware/auth.js
 import jwt from "jsonwebtoken";
-import User from "../models/User";
+import User from "../models/User.js";
 
-exports.protect = async (req, res, next) => {
-    let token = req.headers.authorization?.split(' ')[1] || req.cookies.token;
-    if (!token) return res.status(401).json({ message: 'Not authorized' });
+export const protect = async (req, res, next) => {
+    let token =
+        req.headers.authorization?.startsWith("Bearer")
+            ? req.headers.authorization.split(" ")[1]
+            : null;
+
+    if (!token) {
+        return res.status(401).json({ message: "Not authorized" });
+    }
+
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = await User.findById(decoded.id).select('-password');
+        req.user = await User.findById(decoded.id).select("-password");
+
+        if (!req.user) {
+            return res.status(401).json({ message: "User not found" });
+        }
+
         next();
     } catch (err) {
-        return res.status(401).json({ message: 'Token invalid' });
+        return res.status(401).json({ message: "Token invalid" });
     }
 };
 
-exports.admin = (req, res, next) => {
-    if (req.user?.role !== 'admin') return res.status(403).json({ message: 'Admin only' });
+export const admin = (req, res, next) => {
+    if (req.user?.role !== "admin") {
+        return res.status(403).json({ message: "Admin only" });
+    }
     next();
 };
