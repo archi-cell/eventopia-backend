@@ -1,6 +1,8 @@
 import express from "express";
-import router from express.Router();
+
 import Review from "../models/Review";
+
+const router = express.Router();
 
 // POST Review
 router.post("/", async (req, res) => {
