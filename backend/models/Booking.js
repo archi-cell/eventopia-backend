@@ -1,13 +1,44 @@
-// backend/models/Booking.js
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
-const bookingSchema = new mongoose.Schema({
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-    eventId: { type: mongoose.Schema.Types.ObjectId, ref: "Event", required: true },
-    tickets: { type: Number, required: true },
-    cateringId: { type: mongoose.Schema.Types.ObjectId, ref: "Catering", default: null },
-    totalPrice: { type: Number, required: true },
-    createdAt: { type: Date, default: Date.now },
-});
+const bookingSchema = new mongoose.Schema(
+  {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true
+    },
+    event: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Event",
+      required: true
+    },
+    tickets: {
+      type: Number,
+      required: true
+    },
+    catering: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Catering",
+      default: null
+    },
+    totalAmount: {
+      type: Number,
+      required: true
+    },
+    paymentStatus: {
+      type: String,
+      enum: ["pending", "paid", "cancelled"],
+      default: "pending"
+    },
+    stripeSessionId: {
+      type: String
+    }
+  },
+  {
+    timestamps: true
+  }
+);
 
-module.exports = mongoose.model("Booking", bookingSchema);
+const Booking = mongoose.model("Booking", bookingSchema);
+
+export default Booking;
