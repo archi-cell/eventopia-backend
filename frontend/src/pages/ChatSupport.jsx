@@ -3,8 +3,12 @@ import React, { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 import { MessageCircle, X } from "lucide-react";
 
-const SOCKET_URL = import.meta.env.VITE_API_URL;
-const socket = io(SOCKET_URL);
+
+
+const socket = io(process.env.REACT_APP_API_URL, {
+  transports: ["websocket"],
+});
+
 
 
 export default function ChatSupport() {
