@@ -7,7 +7,7 @@ import Register from './pages/Register';
 import Checkout from './pages/Confirmation';
 
 import Navbar from './components/Navbar';
-import ProtectedRoute from './components/ProtectedRoute';
+
 import Events from "./pages/Events";
 import Confirmation from './pages/Confirmation';
 import ChatSupport from "./pages/ChatSupport";
