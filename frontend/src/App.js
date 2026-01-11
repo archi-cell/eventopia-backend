@@ -5,7 +5,7 @@ import EventDetails from './pages/EventDetails';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Checkout from './pages/Confirmation';
-import AdminDashboard from './pages/AdminDashboard';
+
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 import Events from "./pages/Events";
