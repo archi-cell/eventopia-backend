@@ -1,0 +1,51 @@
+/* HERO SECTION */
+.hero-section {
+    height: 90vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url("../assets/background.jpg") center/cover no-repeat;
+}
+
+
+.brand-text {
+    color: #ffcc00;
+}
+
+.hero-section .btn {
+    background-color: #ffcc00;
+    color: #000;
+    border: none;
+}
+
+.hero-section .btn:hover {
+    background-color: #ffb700;
+}
+
+/* FEATURES */
+.feature-icon {
+    font-size: 3rem;
+    color: #007bff;
+    margin-bottom: 1rem;
+}
+
+.features h5 {
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+/* EVENT CARDS */
+.card {
+    transition: all 0.3s ease;
+    border-radius: 15px;
+}
+
+.card:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
