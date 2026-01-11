@@ -26,7 +26,7 @@ function App() {
                     <Route path="/register" element={<Register />} />
                     <Route path="/checkout/success" element={<Checkout success />} />
                     <Route path="/checkout/cancel" element={<Checkout cancel />} />
-                    <Route path="/admin" element={<ProtectedRoute admin><AdminDashboard /></ProtectedRoute>} />
+                    
                 </Routes>
             </div>
 
