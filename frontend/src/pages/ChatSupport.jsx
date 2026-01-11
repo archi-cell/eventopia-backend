@@ -1,9 +1,11 @@
 // src/components/ChatSupport.jsx
 import React, { useState, useEffect } from "react";
 import { io } from "socket.io-client";
-import { MessageCircle, X } from "lucide-react"; // pretty icons
+import { MessageCircle, X } from "lucide-react";
 
-const socket = io("http://localhost:5000"); // ✅ change URL if backend hosted elsewhere
+const SOCKET_URL = import.meta.env.VITE_API_URL;
+const socket = io(SOCKET_URL);
+
 
 export default function ChatSupport() {
     const [isOpen, setIsOpen] = useState(false);
