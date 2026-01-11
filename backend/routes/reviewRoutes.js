@@ -1,6 +1,6 @@
-const express = require("express");
-const router = express.Router();
-const Review = require("../models/Review");
+import express from "express";
+import router from express.Router();
+import Review from "../models/Review";
 
 // POST Review
 router.post("/", async (req, res) => {
