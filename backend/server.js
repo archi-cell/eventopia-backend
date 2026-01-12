@@ -26,12 +26,18 @@ app.get("/", (req, res) => res.send("API running"));
 
 // ✅ Create HTTP Server & Setup Socket.io AFTER app is defined
 const server = http.createServer(app);
+
 const io = new Server(server, {
-    cors: {
-        origin: process.env.CLIENT_URL,
-        methods: ["GET", "POST"]
-    },
+  cors: {
+    origin: [
+      "http://localhost:3000",
+      "https://eventopia.vercel.app"
+    ],
+    methods: ["GET", "POST"],
+    credentials: true
+  }
 });
+
 
 
 // ✅ SOCKET.IO CHATBOT LOGIC
