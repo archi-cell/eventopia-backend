@@ -13,7 +13,13 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://eventopia.vercel.app" // replace after frontend deploy
+  ],
+  credentials: true,
+}));
 app.use(express.json());
 
 // ✅ Mount routes
